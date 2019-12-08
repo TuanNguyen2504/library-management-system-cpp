@@ -38,6 +38,8 @@ public:
 	void ControlBorrowBookOption();
 	void ControlReturnBookOption();
 
+	void ControlOverdueListOption();
+
 	void MainMenu();
 	void DisplayMain();
 };

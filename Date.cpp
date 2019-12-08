@@ -235,3 +235,30 @@ bool Date::operator <= (const Date& date) {
 
 	return true;
 }
+
+bool operator== (const Date& d1, const Date& d2) {
+	return d1.d == d2.d && d1.m == d2.m && d1.y == d2.y;
+}
+
+int operator- (Date d1, Date d2) {
+	if (d1 == d2)
+		return 0;
+	if (d1.operator>(d2)) {
+		int res = 1;
+		while (1) {
+			--d1;
+			if (d1 == d2)
+				return res;
+			++res;
+		}
+	}
+	else {
+		int res = 1;
+		while (1) {
+			--d2;
+			if (d1 == d2)
+				return res;
+			++res;
+		}
+	}
+}

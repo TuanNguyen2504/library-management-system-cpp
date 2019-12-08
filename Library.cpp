@@ -540,6 +540,7 @@ void Library::ReturnBook() {
 
 	}
 	else {
+		cin.ignore();
 		string bookName;
 		cout << "\nNhap ten sach can tra: ";
 		getline(cin, bookName);
@@ -578,4 +579,100 @@ void Library::ReturnBook() {
 	cout << "\n========== TRA THANH CONG ==========" << endl;
 	//Luu lai file
 	OutputDataToFile(3);
+}
+
+void Library::OverdueList() {
+	LoadDataFromFile(3);
+	Date now;
+	while (1) {
+		cout << "\nNhap ngay can thong ke: ";
+		cin >> now;
+		if (now.validityCheck_Fix())
+			break;
+		cerr << "\nNgay nhap khog hop le !";
+	}
+	vector<Readers> overdueReaders;
+	vector<int> money;
+	money.resize(_ls.size());
+	for (int i = 0; i < _ls.size(); ++i)
+		money[i] = 0;
+
+	//liet ke nhung doc gia muon sach qua han
+	for (int i = 0; i < _ls.size(); ++i) {
+
+		vector<int> returned = ((BorrowedSlip*)_ls[i])->GetReturned();
+		vector<Date> returnDate = ((BorrowedSlip*)_ls[i])->GetBookReturnDate();
+		Date borrowDate = ((BorrowedSlip*)_ls[i])->GetBorrowDate();
+		vector<Book> bookList = ((BorrowedSlip*)_ls[i])->GetBookList();
+		//ngay muon toi da
+		borrowDate += 7;
+		bool overdue = false;
+	
+		for (int j = 0; j < returned.size(); ++j) {
+			//sach da tra
+			int nOver = 0;
+			if (returned[j] != 0) {
+				if (borrowDate < returnDate[j]) {
+					overdue = true;
+					nOver = returnDate[j] - borrowDate;
+					if(Book::IsVNBook(bookList[j].GetISBN()))
+						money[i] += OVERDUE_MONEY_VN_BOOK * nOver;
+					else
+						money[i] += OVERDUE_MONEY_FOREIGN_BOOK * nOver;
+				}
+			}
+			//sach chua tra
+			else {
+				if (borrowDate < now) {
+					overdue = true;
+					nOver = now - borrowDate;
+					if (Book::IsVNBook(bookList[j].GetISBN()))
+						money[i] += OVERDUE_MONEY_VN_BOOK * nOver;
+					else
+						money[i] += OVERDUE_MONEY_FOREIGN_BOOK * nOver;
+				}
+			}
+		}
+
+		if (overdue == true)
+			overdueReaders.push_back(((BorrowedSlip*)_ls[i])->GetReaders());
+	}
+	
+	if (overdueReaders.size() == 0) {
+		TextColor(3);
+		cout << "\n========== KHONG CO DOC GIA NAO MUON SACH QUA HAN ==========\n";
+		return;
+	}
+
+	//Merge doc gia bi trung
+	vector<Readers> RE_result;
+	vector<int> MO_result;
+	RE_result.push_back(overdueReaders[0]);
+	MO_result.push_back(money[0]);
+
+	for (int i = 1; i < overdueReaders.size(); ++i) {
+		for (int j = 0; j < RE_result.size(); ++j) {
+			if (overdueReaders[i].GetID() == RE_result[j].GetID()) {
+				MO_result[j] += money[i];
+				break;
+			}		
+			else {
+				RE_result.push_back(overdueReaders[i]);
+				MO_result.push_back(money[i]);
+				break;
+			}
+		}
+	}
+
+	TextColor(6);
+	cout << "\n=============== DANH SACH MUON SACH QUA HAN ================" << endl;
+	TextColor(3);
+	cout << "====> Co " << RE_result.size() << " doc gia muon sach qua han" << endl;
+	for (int i = 0; i < RE_result.size(); ++i) {
+		TextColor(10);
+		cout << "========= STT " << i + 1 << " =========" << endl;
+		TextColor(7);
+		RE_result[i].Output();
+		cout << "\n==> So tien phat: " << MO_result[i] << endl;
+	}
 }

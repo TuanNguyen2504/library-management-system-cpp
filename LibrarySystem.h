@@ -18,6 +18,8 @@
 #define EAN_13 "978"
 #define _EAN_13 "979"
 #define ISBN_VN "604"
+#define  OVERDUE_MONEY_VN_BOOK  10000
+#define  OVERDUE_MONEY_FOREIGN_BOOK 20000
 using namespace std;
 
 //Ham ho tro

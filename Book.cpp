@@ -100,6 +100,12 @@ bool Book::CheckBookCode(const string& code) {
 		}
 	return true;
 }
+bool Book::IsVNBook(const string& ISBN) {
+	if (CheckISBN(ISBN)) 	
+		if (ISBN.substr(3, 3) == ISBN_VN)
+			return true;
+	return false;
+}
 
 string Book::FormatISBN() const {
 	string res = _ISBN;

@@ -36,6 +36,7 @@ public:
 
 	static bool CheckISBN(const string& ISBN);
 	static bool CheckBookCode(const string& code);
+	static bool IsVNBook(const string& ISBN);
 
 	void Input();
 	void Output();

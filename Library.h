@@ -30,6 +30,7 @@ public:
 	void Edit(int option);
 	void BorrowBook();
 	void ReturnBook();
+	void OverdueList();
 };
 
 #endif

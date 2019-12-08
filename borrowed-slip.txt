@@ -1,26 +1,7 @@
-Nguyen Huy Hung
-342037845
-Thua Thien - Hue
-40
-2
-Tuoi tre dang gia bao nhieu
-Rosie Nguyen
-Hoi Nha Van
-8935235210264
-9786049608261
-70000
-The Clean Coder
-Robert Martin
-Prentice Hall
-0137081073
-9780137081073
-750000
-7/12/2019
-0 0
 Nguyen Le Anh Tuan
-342027847
+18120634
 Dong Thap
-19
+20
 3
 Tuoi tre dang gia bao nhieu
 Rosie Nguyen
@@ -40,37 +21,43 @@ NXB Tong Hop TPHCM
 8935086839553
 9786045875223
 68000
-12/12/2019
-1 21/12/2019 1 25/4/2020 1 21/12/2019
-Nguyen le anh tuan
-342072847
-Dong thap
-19
-1
-OOP-2
-Nguyen Van A
-HCMUS
-8937854621
-9784561254560
-50000
-12/1/2020
-0
-nguyen le anh tuan
-342027847
-DOng thap
+2/12/2019
+1 31/12/2019 1 31/12/2019 1 31/12/2019
+Ho Khac Minh Tri
+18120609
+Dong Nai
 19
 2
-Tuoi tre dang gia bao nhieu
-Rosie Nguyen
-Hoi Nha Van
-8935235210264
-9786049608261
-70000
+The Clean Coder
+Robert Martin
+Prentice Hall
+0137081073
+9780137081073
+750000
+Ngay mai van sang
+Tuan Nguyen
+Kim Dong
+8937841520
+9786041232012
+50000
+15/11/2019
+0 0
+Nguyen Le Anh Tuan
+18120634
+Dong Thap
+20
+2
 Man's Search For Meaning
 Viktor E.Frankl
 NXB Tong Hop TPHCM
 8935086839553
 9786045875223
 68000
-13/12/2019
-1 25/4/2020 1 21/12/2019
+The Clean Coder
+Robert Martin
+Prentice Hall
+0137081073
+9780137081073
+750000
+4/12/2019
+1 12/12/2019 1 31/12/2019

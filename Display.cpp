@@ -402,6 +402,21 @@ void Display::ControlReturnBookOption() {
 	_getch();
 }
 
+// ======== OVERDUE LIST OPTION ========= //
+void Display::ControlOverdueListOption() {
+	system("cls");
+	gotoxy(TITLE_X - 2, TITLE_Y);
+	TextColor(TITLE_COLOR);
+	ShowConsoleCursor(true);
+	cout << "======== He Thong Quan Ly Thu Vien - Danh sach qua han muon sach ========";
+	TextColor(7);
+	Library lib;
+	lib.OverdueList();
+	TextColor(12);
+	cout << "\n<== Nhan phim bat ky de tiep tuc ==>" << endl;
+	_getch();
+}
+
 // ======== MAIN DISPLAY ======== //
 void Display::MainMenu() {
 	gotoxy(TITLE_X, TITLE_Y);
@@ -486,6 +501,11 @@ void Display::DisplayMain() {
 				}
 				case 4: {
 					ControlReturnBookOption();
+					DisplayMain();
+					return;
+				}
+				default: {
+					ControlOverdueListOption();
 					DisplayMain();
 					return;
 				}
