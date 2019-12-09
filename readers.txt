@@ -1,20 +1,36 @@
 Nguyen Le Anh Tuan
 18120634
-Dong Thap
-20
+Cao Lanh, Dong Thap
+19
+Nguyen Cat Tuong
+18120644
+Binh Thuan, Viet Nam
+19
 Ho Khac Minh Tri
 18120609
-Dong Nai
+Dong Nai, Viet Nam
 19
-Le Thi Bich
-342027845
-Ha Noi
-36
-Nguyen Huy Hung
-342037845
-Thua Thien - Hue
-40
-Nguyen Cat Tuong
-181206044
-Binh Thuan
+Nguyen Ngoc Hien
+30072000
+Cao Lanh, Dong Thap
+19
+Nguyen Ngoc Thao
+12122000
+Cao Lanh, Dong Thap
+19
+Le Ngoc Han
+15102000
+quan 9, TPHCM
+19
+Mai Thi Bich Vien 
+10062000
+Phu My, Binh Dinh
+19
+Nguyen Luong Vu
+27052000
+Xuan Loc, Dong Nai
+19
+Cao Nhut Duy( Co Truong)
+29062000
+Cao Lanh, Dong Thap
 19

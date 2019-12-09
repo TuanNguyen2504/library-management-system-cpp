@@ -31,7 +31,8 @@ void TextColor(int color)
 
 void Display::SayGoodBye() {
 	system("cls");
-	cout << "!========= GOOD BYE ========!";
+	cout << "\n\n!========= GOOD BYE ========!" << endl;
+	system("pause");
 	exit(0);
 }
 

@@ -483,9 +483,9 @@ void Library::ReturnBook() {
 	LoadDataFromFile(3);
 
 	//Tim nguoi can tra
-	cout << "\nNhap ID nguoi muon: ";
 	string ID;
 	while (1) {
+		cout << "\nNhap ID nguoi muon: ";
 		getline(cin, ID);
 		if (Readers::CheckID(ID))
 			break;
@@ -593,13 +593,10 @@ void Library::OverdueList() {
 	}
 	vector<Readers> overdueReaders;
 	vector<int> money;
-	money.resize(_ls.size());
-	for (int i = 0; i < _ls.size(); ++i)
-		money[i] = 0;
-
+	
 	//liet ke nhung doc gia muon sach qua han
 	for (int i = 0; i < _ls.size(); ++i) {
-
+		int money_t = 0;
 		vector<int> returned = ((BorrowedSlip*)_ls[i])->GetReturned();
 		vector<Date> returnDate = ((BorrowedSlip*)_ls[i])->GetBookReturnDate();
 		Date borrowDate = ((BorrowedSlip*)_ls[i])->GetBorrowDate();
@@ -616,9 +613,9 @@ void Library::OverdueList() {
 					overdue = true;
 					nOver = returnDate[j] - borrowDate;
 					if(Book::IsVNBook(bookList[j].GetISBN()))
-						money[i] += OVERDUE_MONEY_VN_BOOK * nOver;
+						money_t += OVERDUE_MONEY_VN_BOOK * nOver;
 					else
-						money[i] += OVERDUE_MONEY_FOREIGN_BOOK * nOver;
+						money_t += OVERDUE_MONEY_FOREIGN_BOOK * nOver;
 				}
 			}
 			//sach chua tra
@@ -627,15 +624,17 @@ void Library::OverdueList() {
 					overdue = true;
 					nOver = now - borrowDate;
 					if (Book::IsVNBook(bookList[j].GetISBN()))
-						money[i] += OVERDUE_MONEY_VN_BOOK * nOver;
+						money_t += (OVERDUE_MONEY_VN_BOOK * nOver);
 					else
-						money[i] += OVERDUE_MONEY_FOREIGN_BOOK * nOver;
+						money_t += (OVERDUE_MONEY_FOREIGN_BOOK * nOver);
 				}
 			}
 		}
-
-		if (overdue == true)
+		if (overdue == true) {
 			overdueReaders.push_back(((BorrowedSlip*)_ls[i])->GetReaders());
+			money.push_back(money_t);
+		}
+		
 	}
 	
 	if (overdueReaders.size() == 0) {
@@ -651,16 +650,17 @@ void Library::OverdueList() {
 	MO_result.push_back(money[0]);
 
 	for (int i = 1; i < overdueReaders.size(); ++i) {
+		bool check = true;
 		for (int j = 0; j < RE_result.size(); ++j) {
 			if (overdueReaders[i].GetID() == RE_result[j].GetID()) {
 				MO_result[j] += money[i];
+				check = false;
 				break;
 			}		
-			else {
-				RE_result.push_back(overdueReaders[i]);
-				MO_result.push_back(money[i]);
-				break;
-			}
+		}
+		if (check) {
+			RE_result.push_back(overdueReaders[i]);
+			MO_result.push_back(money[i]);
 		}
 	}
 

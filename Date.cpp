@@ -223,14 +223,14 @@ bool Date::operator >= (const Date& date) {
 }
 
 bool Date::operator < (const Date& date) {
-	if ((*this) > date)
+	if ((*this) >= date)
 		return false;
 
 	return true;
 }
 
 bool Date::operator <= (const Date& date) {
-	if ((*this) >= date)
+	if ((*this) > date)
 		return false;
 
 	return true;

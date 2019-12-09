@@ -55,7 +55,7 @@ void Readers::SetAge(int age) {
 bool Readers::CheckID(const string& ID) {
 	for(int i = 0; i < ID.length(); ++i)
 		if (ID[i] < '0' || ID[i]>'9') {
-			cerr << "\nID phai la so tu 0-9 !";
+			cerr << "\nID phai la so tu 0-9 !" << endl;
 			return false;
 		}
 	return true;
