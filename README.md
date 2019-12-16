@@ -27,6 +27,6 @@ Giảng viên: Phạm Minh Tuấn
 
  * Project được update tại: https://github.com/TuanNguyen2504/library-management-system-cpp
 
- * Project co the dung de tham khao. Neu co su dung trong muc dich lam do an vui long ghi nguon day du. Cam on !
+ * Project có thể dùng để tham khảo. Nếu dùng project trong mục đích làm đồ án, vui lòng ghi nguồn đầy đủ. Cảm ơn !
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
