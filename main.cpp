@@ -16,13 +16,6 @@ int main() {
 		createDataFile();
 		Display display;
 		display.DisplayMain();
-		/*Date date;
-		cin >> date;
-		date += 7;
-		cout << date;
-		Date date2;
-		cin >> date2;
-		cout << date2 - date;*/
 		TextColor(7);
 		system("pause");
 		return 0;

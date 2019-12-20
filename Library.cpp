@@ -189,7 +189,9 @@ void Library::Add(int option) {
 
 void Library::Delete(int option) {
 	int found;
-	if (option == 1)
+	if (option == 0)
+		found = Search(option, 3);
+	else if (option == 1)
 		found = Search(option, 1);
 	else
 		found = Search(option, 0);
@@ -548,7 +550,6 @@ void Library::ReturnBook() {
 		vector<vector<Book>> bookList;
 		for (int i = 0; i < founds.size(); ++i)
 			bookList.push_back(((BorrowedSlip*)_ls[founds[i]])->GetBookList());
-
 		int pos_1 = -1;
 		int pos_2 = -1;
 		for (int i = 0; i < founds.size(); ++i) {
@@ -564,12 +565,11 @@ void Library::ReturnBook() {
 			cerr << "\n========== KHONG TIM THAY SACH CAN TRA =========" << endl;
 			return;
 		}
-
 		Date date;
 		while (1) {
 			cout << "\nNhap ngay tra: ";
 			cin >> date;
-			if (date.validityCheck_Fix() == true && date >= ((BorrowedSlip*)_ls[pos_1])->GetBorrowDate())
+			if (date.validityCheck_Fix() == true && date >= ((BorrowedSlip*)_ls[founds[pos_1]])->GetBorrowDate())
 				break;
 			cerr << "\nNgay nhap khong hop le (Ngay tra >= ngay muon) !";
 		}

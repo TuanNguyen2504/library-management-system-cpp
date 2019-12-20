@@ -74,15 +74,17 @@ void Book::SetPrice(double price) {
 }
 
 bool Book::CheckISBN(const string& ISBN) {
+	if (IsEmpty(ISBN))
+		return false;
+
+	if (ISBN.length() != 13) {
+		cerr << "\nMa ISBN gom 13 chu so !";
+		return false;
+	}
 	string check;
 	check = check + ISBN[0] + ISBN[1] + ISBN[2];
 	if (check != _EAN_13 && check != EAN_13) {
 		cerr << "\nMa ISBN-13 bat dau bang 978 hoac 979 !";
-		return false;
-	}
-
-	if (ISBN.length() != 13) {
-		cerr << "\nMa ISBN gom 13 chu so !";
 		return false;
 	}
 	for (int i = 0; i < ISBN.length(); ++i)
@@ -144,7 +146,7 @@ void Book::Input() {
 		getline(cin, _ISBN);
 		if (CheckISBN(_ISBN))
 			break;
-	};
+	}
 	while(1){
 		cout << "\nNhap gia sach: ";
 		cin >> _price;
